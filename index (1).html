@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tinghao Wang — Sophomore undergraduate student at UESTC. Research interests: MLLM, VLA, Embodied AI, efficient inference, token pruning, and streaming video understanding." />
+  <title>Tinghao Wang</title>
+
+  <style>
+    :root {
+      --bg: #fbfaf7;
+      --paper: #ffffff;
+      --text: #202124;
+      --muted: #5f6368;
+      --light: #f1f3f4;
+      --line: #dadce0;
+      --blue: #3367d6;
+      --blue-dark: #174ea6;
+      --blue-soft: #eef4ff;
+      --gold: #b7791f;
+      --green: #188038;
+      --shadow: 0 12px 35px rgba(40, 54, 85, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(51, 103, 214, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 42%, #f7f7f4 100%);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--blue-dark);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(23, 78, 166, 0.28);
+    }
+
+    a:hover {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
+    .page {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(251, 250, 247, 0.88);
+      border-bottom: 1px solid rgba(218, 220, 224, 0.65);
+    }
+
+    .nav {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    .brand {
+      font-weight: 750;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      border-bottom: none;
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .navlinks a {
+      color: var(--muted);
+      border-bottom: none;
+    }
+
+    .navlinks a:hover {
+      color: var(--blue-dark);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 285px;
+      gap: 38px;
+      align-items: center;
+      padding: 56px 0 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 650;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      margin: 0 0 18px;
+      font-weight: 750;
+    }
+
+    .subtitle {
+      font-size: 21px;
+      color: #3c4043;
+      margin: 0 0 18px;
+      max-width: 760px;
+    }
+
+    .bio-text {
+      font-size: 18px;
+      color: #3f3f46;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--text);
+      box-shadow: 0 4px 14px rgba(40, 54, 85, 0.06);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .button.primary {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      color: #fff;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .profile-card {
+      background: var(--paper);
+      border: 1px solid rgba(218, 220, 224, 0.85);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(51, 103, 214, 0.95), rgba(23, 78, 166, 0.95)),
+        radial-gradient(circle at 28% 20%, rgba(255,255,255,.35), transparent 26%);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      box-shadow: inset 0 0 0 7px rgba(255,255,255,.2);
+    }
+
+    .profile-card h2 {
+      text-align: center;
+      margin: 0 0 4px;
+      font-size: 26px;
+      letter-spacing: -0.02em;
+    }
+
+    .profile-card .role {
+      text-align: center;
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .profile-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+      color: #3c4043;
+    }
+
+    .profile-list li {
+      padding: 9px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 20px 0 40px;
+    }
+
+    .stat {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 18px 15px;
+      box-shadow: 0 8px 22px rgba(40, 54, 85, 0.045);
+    }
+
+    .stat strong {
+      display: block;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 27px;
+      line-height: 1;
+      color: var(--blue-dark);
+      margin-bottom: 8px;
+    }
+
+    .stat span {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    section {
+      scroll-margin-top: 90px;
+      margin: 44px 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 9px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -0.035em;
+    }
+
+    .section-title span {
+      color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(40, 54, 85, 0.045);
+    }
+
+    .news {
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .news li {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px dashed #d7dce2;
+    }
+
+    .news li:last-child {
+      border-bottom: none;
+    }
+
+    .date {
+      color: var(--blue-dark);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .pub-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pub {
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid #e2e6ec;
+      background: linear-gradient(180deg, #ffffff 0%, #fcfdff 100%);
+    }
+
+    .pub-badge {
+      height: 96px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-weight: 850;
+      font-size: 20px;
+      text-align: center;
+      letter-spacing: -0.04em;
+      padding: 10px;
+      background:
+        linear-gradient(135deg, rgba(23, 78, 166, 0.96), rgba(51, 103, 214, 0.92)),
+        radial-gradient(circle at 25% 20%, rgba(255,255,255,.45), transparent 28%);
+    }
+
+    .pub-badge.gold {
+      background: linear-gradient(135deg, #92400e, #d97706);
+    }
+
+    .pub-badge.green {
+      background: linear-gradient(135deg, #166534, #16a34a);
+    }
+
+    .pub-badge.purple {
+      background: linear-gradient(135deg, #4c1d95, #7c3aed);
+    }
+
+    .pub-title {
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: -0.015em;
+      margin: 0 0 6px;
+    }
+
+    .authors {
+      margin: 0 0 4px;
+      color: #3c4043;
+    }
+
+    .venue {
+      margin: 0 0 10px;
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .pub-desc {
+      margin: 0;
+      color: #4b5563;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .item {
+      padding: 18px 0;
+      border-bottom: 1px dashed #d7dce2;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .item h3 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      letter-spacing: -0.015em;
+    }
+
+    .item .right {
+      float: right;
+      color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 13px;
+      margin-left: 12px;
+    }
+
+    .compact-list {
+      margin: 8px 0 0 18px;
+      padding: 0;
+    }
+
+    .compact-list li {
+      margin: 6px 0;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .chip {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 12px;
+      color: var(--blue-dark);
+      background: var(--blue-soft);
+      border: 1px solid rgba(51, 103, 214, 0.18);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-weight: 650;
+    }
+
+    .footer {
+      margin: 56px 0 34px;
+      text-align: center;
+      color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        max-width: 420px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        gap: 10px;
+        flex-direction: column;
+      }
+
+      .navlinks {
+        gap: 12px;
+      }
+
+      .page,
+      .nav {
+        width: min(100% - 28px, 1080px);
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .pub {
+        grid-template-columns: 1fr;
+      }
+
+      .pub-badge {
+        height: 72px;
+      }
+
+      .news li {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <nav class="nav">
+      <a class="brand" href="#">Tinghao Wang</a>
+      <div class="navlinks">
+        <a href="#biography">Biography</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#research">Research</a>
+        <a href="#honors">Honors</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero" id="biography">
+      <div>
+        <div class="eyebrow">UESTC · Zhufeng Program · Computer Science</div>
+        <h1>Tinghao Wang</h1>
+        <p class="subtitle">
+          Sophomore Undergraduate Student in Computer Science and Engineering, University of Electronic Science and Technology of China.
+        </p>
+        <p class="bio-text">
+          I am a second-year undergraduate student in the School of Computer Science and Engineering, Zhufeng Program, UESTC.
+          My research interests include Multimodal Large Language Models, Large Language Models, Vision-Language-Action Models,
+          Embodied AI, efficient inference, visual token pruning, and streaming video understanding.
+        </p>
+
+        <div class="actions">
+          <a class="button primary" href="#publications">Selected Work</a>
+          <a class="button" href="mailto:2024070903016@std.uestc.edu.cn">Email</a>
+          <a class="button" href="https://github.com/MAX-7237">GitHub</a>
+          <a class="button" href="Tinghao_Wang_Resume.pdf">CV</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" id="contact">
+        <div class="avatar">TW</div>
+        <h2>Tinghao Wang</h2>
+        <p class="role">Sophomore Undergraduate Student</p>
+        <ul class="profile-list">
+          <li><strong>Affiliation:</strong> UESTC, School of Computer Science and Engineering</li>
+          <li><strong>Program:</strong> Zhufeng Program</li>
+          <li><strong>Email:</strong> <a href="mailto:2024070903016@std.uestc.edu.cn">2024070903016@std.uestc.edu.cn</a></li>
+          <li><strong>Alternative:</strong> <a href="mailto:339462092@qq.com">339462092@qq.com</a></li>
+          <li><strong>Phone:</strong> +86 15908114707</li>
+        </ul>
+      </aside>
+    </section>
+
+    <div class="stats">
+      <div class="stat">
+        <strong>3.99</strong>
+        <span>GPA / 4.00</span>
+      </div>
+      <div class="stat">
+        <strong>94.76</strong>
+        <span>Weighted Average / 100</span>
+      </div>
+      <div class="stat">
+        <strong>1st</strong>
+        <span>Rank in Computer Science and Technology</span>
+      </div>
+      <div class="stat">
+        <strong>4</strong>
+        <span>Preprints and submissions</span>
+      </div>
+    </div>
+
+    <section id="news">
+      <div class="section-title">
+        <h2>News</h2>
+        <span>recent updates</span>
+      </div>
+      <div class="card">
+        <ul class="news">
+          <li>
+            <span class="date">2026</span>
+            <span>Four works are currently under review at NeurIPS 2026 / ACMMM 2026, covering LVLM token pruning, hallucination mitigation, and VLM-agent evaluation.</span>
+          </li>
+          <li>
+            <span class="date">2025</span>
+            <span>Won the Best Positive Side Award and National Second Prize in the 16th China Undergraduate Physics Tournament.</span>
+          </li>
+          <li>
+            <span class="date">2024</span>
+            <span>Joined the Zhufeng Program at UESTC and started research on multimodal models and efficient inference.</span>
+          </li>
+          <li>
+            <span class="date">2023</span>
+            <span>Won the Silver Medal in the 40th Chinese Physics Olympiad Final, ranked 10th in Henan Province.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-title">
+        <h2>Preprints and Submissions</h2>
+        <span>selected research works</span>
+      </div>
+
+      <div class="pub-list">
+        <article class="pub">
+          <div class="pub-badge">TOPS</div>
+          <div>
+            <p class="pub-title">TOPS: First-Principles Visual Token Pruning via Constructing Token Optimal Preservation Sets for Efficient LVLM Inference</p>
+            <p class="authors"><strong>Tinghao Wang</strong>, Yichen Guo, Rui Huang, Zheng Lu, Qizhe Zhang, Chenxi Li, Yuan Zhang, Jiajun Cao, Zhirong Shen, Yaosong Du, Guangyan Gan, Wenya Wang, Lin William Cong, Shanghang Zhang</p>
+            <p class="venue">NeurIPS 2026 Conference, under review</p>
+            <p class="pub-desc">
+              A training-free visual token pruning framework that formulates pruning as Token Optimal Preservation Set construction and studies token selection through task relevance, information coverage, and semantic diversity.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Visual Token Pruning</span>
+              <span class="chip">Efficient LVLM</span>
+              <span class="chip">Training-Free</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-badge purple">PAFI</div>
+          <div>
+            <p class="pub-title">PAFI: Training-Free Hallucination Mitigation in LVLMs via Dual-Stream Attention and FFN Intervention</p>
+            <p class="authors">Renyuan Li, Yichen Guo, Tao Luo, <strong>Tinghao Wang</strong>, Kai Tang, Wenya Wang</p>
+            <p class="venue">ACMMM 2026 Conference, under review</p>
+            <p class="pub-desc">
+              A training-free hallucination mitigation method that combines image-token attention amplification with FFN output attenuation at critical layers.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Hallucination Mitigation</span>
+              <span class="chip">LVLM</span>
+              <span class="chip">Inference Intervention</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-badge green">DCLA</div>
+          <div>
+            <p class="pub-title">Mitigating Hallucinations via Inter-Layer Consistency Aggregation in Large Vision-Language Models</p>
+            <p class="authors">Kai Tang, Jinhao You, Yichen Guo, Tao Luo, <strong>Tinghao Wang</strong>, Yuhan Rui, Renyuan Li, Jixian Wu, Xiuqi Ge, Hanze Li, Wenya Wang, Xiande Huang</p>
+            <p class="venue">ACMMM 2026 Conference, under review</p>
+            <p class="pub-desc">
+              A training-free decoding method that enforces semantic consistency across transformer layers to suppress unreliable predictions in LVLMs.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Decoding</span>
+              <span class="chip">Inter-Layer Consistency</span>
+              <span class="chip">LVLM Reliability</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub">
+          <div class="pub-badge gold">WRB</div>
+          <div>
+            <p class="pub-title">WildRoadBench: A Wild Aerial Road-Damage Grounding Benchmark for Vision-Language Models and Autonomous Agents</p>
+            <p class="authors">Bingnan Liu, Chenhang Cui, Rui Huang, Jiani Luo, Zhirong Shen, <strong>Tinghao Wang</strong>, Xiande Huang, Lingbei Meng, Fei Shen, An Zhang</p>
+            <p class="venue">NeurIPS 2026 Evaluations and Datasets Track, under review</p>
+            <p class="pub-desc">
+              A wild aerial road-damage grounding benchmark for evaluating direct VLM grounding and LLM-driven autonomous agent workflows.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Benchmark</span>
+              <span class="chip">VLM Grounding</span>
+              <span class="chip">Autonomous Agents</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="section-title">
+        <h2>Research Experience</h2>
+        <span>projects and contributions</span>
+      </div>
+
+      <div class="card">
+        <div class="item">
+          <span class="right">NeurIPS 2026 Submission</span>
+          <h3>TOPS: First-Principles Visual Token Pruning</h3>
+          <p><strong>Topic:</strong> Efficient inference and visual token pruning for Multimodal Large Language Models.</p>
+          <ul class="compact-list">
+            <li>Designed a training-free framework with coarse visual-token selection after the vision encoder and progressive refinement inside the LLM decoder.</li>
+            <li>Formulated visual token pruning as a Token Optimal Preservation Set construction problem from a first-principles perspective.</li>
+            <li>Conducted experiments across 7 MLLM backbones and 14 benchmarks under different token reduction ratios.</li>
+            <li>Demonstrated that TOPS removes 77.8% of visual tokens on LLaVA-NeXT while preserving 100.0% performance on the 7B model and achieving 100.6% relative performance on the 13B model.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <span class="right">ACMMM 2026 Submission</span>
+          <h3>PAFI: Dual-Stream Attention and FFN Intervention</h3>
+          <p><strong>Topic:</strong> Hallucination mitigation in Large Vision-Language Models.</p>
+          <ul class="compact-list">
+            <li>Conducted mechanistic analysis showing that attention aggregates visual evidence while FFNs at critical layers may introduce overriding language priors.</li>
+            <li>Proposed a single-forward-pass training-free intervention that amplifies image-token attention and attenuates FFN outputs at critical layers.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <span class="right">ACMMM 2026 Submission</span>
+          <h3>DCLA: Inter-Layer Consistency Aggregation</h3>
+          <p><strong>Topic:</strong> Training-free decoding and hallucination mitigation in LVLMs.</p>
+          <ul class="compact-list">
+            <li>Proposed Decoding with Inter-Layer Consistency via Layer Aggregation for reducing hallucinations in LVLMs.</li>
+            <li>Validated that inter-layer consistency can improve factual reliability during inference.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <span class="right">NeurIPS 2026 Submission</span>
+          <h3>WildRoadBench</h3>
+          <p><strong>Topic:</strong> Vision-language grounding, UAV road-damage perception, and autonomous research agents.</p>
+          <ul class="compact-list">
+            <li>Contributed to a 1,061-image UAV road-damage grounding benchmark with professionally annotated ground truth.</li>
+            <li>Supported the design of a two-track evaluation protocol and a controlled agent evaluation harness.</li>
+            <li>Benchmarked 25 VLMs and 15 frontier LLM-driven agents.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+        <span>academic background</span>
+      </div>
+      <div class="card">
+        <div class="item">
+          <span class="right">Sept. 2024 – Present</span>
+          <h3>University of Electronic Science and Technology of China (UESTC)</h3>
+          <p>Undergraduate Student in Computer Science and Engineering, Zhufeng Program.</p>
+          <ul class="compact-list">
+            <li>GPA: 3.99/4.00; Weighted Average Score: 94.76/100.</li>
+            <li>Rank: 1st in Computer Science and Technology.</li>
+            <li>Selected coursework: College Physics I 99, College Physics II 97, Mathematical Analysis II 97, C Programming 96, Linear Algebra 95.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="honors">
+      <div class="section-title">
+        <h2>Honors & Awards</h2>
+        <span>competitions and scholarships</span>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Academic Competitions</h3>
+          <ul class="compact-list">
+            <li>Silver Medal, 40th Chinese Physics Olympiad Final, 2023; ranked 10th in Henan Province.</li>
+            <li>Provincial First Prize, 40th CPHO Semifinal Contest; ranked 12th in Henan Province and selected for the 2023 Henan Provincial Team.</li>
+            <li>Provincial Second Prize, 39th CPHO Semifinal Contest, 2022.</li>
+            <li>Outstanding Camper, Peking University Physics Golden Autumn Camp, 2023.</li>
+            <li>Second Prize, Yingcai Cup Electronic Design Competition, UESTC, 2024.</li>
+            <li>Third Prize, Mengsheng Cup Electronic Design Competition, UESTC, 2024.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>CUPT and Academic Performance</h3>
+          <ul class="compact-list">
+            <li>Best Positive Side Award, 16th China Undergraduate Physics Tournament, 2025.</li>
+            <li>National Second Prize as a team member, 16th CUPT, 2025.</li>
+            <li>First Prize, CUPT Southwest Regional Tournament, 2025.</li>
+            <li>UESTC Special Scholarship for outstanding academic performance.</li>
+            <li>Built a strong mathematical and physical foundation through long-term physics olympiad training.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2026 Tinghao Wang · Built for academic homepage · Last updated July 2026
+    </footer>
+  </main>
+</body>
+</html>

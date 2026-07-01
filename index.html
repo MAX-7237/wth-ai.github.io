@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinghao Wang</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --border: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 22px 72px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    }
+
+    .name {
+      font-size: 42px;
+      line-height: 1.1;
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .title {
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      background: var(--primary-soft);
+      color: #1e40af;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+    }
+
+    .wide { grid-column: 1 / -1; }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 23px;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin: 18px 0 6px;
+      font-size: 17px;
+    }
+
+    p { margin: 0 0 12px; }
+
+    ul {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    li { margin: 6px 0; }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pub { margin-bottom: 18px; }
+
+    .pub-title { font-weight: 700; }
+
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      .container { padding: 28px 16px 48px; }
+      .hero { padding: 28px; }
+      .name { font-size: 34px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1 class="name">Tinghao Wang</h1>
+      <p class="title">
+        Sophomore Undergraduate Student in Computer Science and Engineering<br />
+        Zhufeng Program, University of Electronic Science and Technology of China (UESTC)
+      </p>
+      <p>
+        I am a second-year undergraduate student at UESTC. My research interests include
+        Multimodal Large Language Models, Vision-Language-Action Models, Embodied AI,
+        efficient inference, visual token pruning, and streaming video understanding.
+      </p>
+
+      <div class="tags">
+        <span class="tag">MLLM</span>
+        <span class="tag">Embodied AI</span>
+        <span class="tag">VLA</span>
+        <span class="tag">Token Pruning</span>
+        <span class="tag">Efficient AI</span>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:2024070903016@std.uestc.edu.cn">2024070903016@std.uestc.edu.cn</a></p>
+        <p>Alternative Email: <a href="mailto:339462092@qq.com">339462092@qq.com</a></p>
+        <p>Phone: +86 15908114707</p>
+        <p>GitHub: <a href="#">GitHub Profile</a></p>
+      </div>
+
+      <div class="card">
+        <h2>Education</h2>
+        <h3>University of Electronic Science and Technology of China</h3>
+        <p class="meta">Undergraduate Student, Computer Science and Engineering, Zhufeng Program</p>
+        <p class="meta">Sept. 2024 – Present</p>
+        <ul>
+          <li>GPA: 3.99 / 4.00</li>
+          <li>Weighted Average Score: 94.76 / 100</li>
+          <li>Rank: 1st in Computer Science and Technology</li>
+        </ul>
+      </div>
+
+      <div class="card wide">
+        <h2>Preprints and Submissions</h2>
+
+        <div class="pub">
+          <p class="pub-title">TOPS: First-Principles Visual Token Pruning via Constructing Token Optimal Preservation Sets for Efficient LVLM Inference</p>
+          <p class="meta">NeurIPS 2026 Conference, under review</p>
+        </div>
+
+        <div class="pub">
+          <p class="pub-title">PAFI: Training-Free Hallucination Mitigation in LVLMs via Dual-Stream Attention and FFN Intervention</p>
+          <p class="meta">ACMMM 2026 Conference, under review</p>
+        </div>
+
+        <div class="pub">
+          <p class="pub-title">Mitigating Hallucinations via Inter-Layer Consistency Aggregation in Large Vision-Language Models</p>
+          <p class="meta">ACMMM 2026 Conference, under review</p>
+        </div>
+
+        <div class="pub">
+          <p class="pub-title">WildRoadBench: A Wild Aerial Road-Damage Grounding Benchmark for Vision-Language Models and Autonomous Agents</p>
+          <p class="meta">NeurIPS 2026 Evaluations and Datasets Track, under review</p>
+        </div>
+      </div>
+
+      <div class="card wide">
+        <h2>Research Experience</h2>
+
+        <h3>TOPS: Efficient Visual Token Pruning for LVLM Inference</h3>
+        <p>
+          Designed a training-free visual token pruning framework with coarse token selection after the vision encoder
+          and progressive refinement inside the LLM decoder. The work studies token pruning from a first-principles
+          perspective and formulates it as a Token Optimal Preservation Set construction problem.
+        </p>
+        <ul>
+          <li>Identified three key principles for token selection: task relevance, information coverage, and semantic diversity.</li>
+          <li>Evaluated across multiple MLLM backbones and benchmarks under different token reduction ratios.</li>
+          <li>Demonstrated strong performance preservation under substantial visual token reduction.</li>
+        </ul>
+
+        <h3>PAFI: Training-Free Hallucination Mitigation in LVLMs</h3>
+        <p>
+          Conducted mechanistic analysis of hallucination in LVLMs and proposed a dual-stream intervention method
+          that amplifies image-token attention while attenuating critical FFN outputs.
+        </p>
+
+        <h3>WildRoadBench</h3>
+        <p>
+          Contributed to a wild aerial road-damage grounding benchmark for vision-language models and autonomous agents,
+          including evaluation protocol design and benchmarking of VLMs and LLM-driven agents.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Honors</h2>
+        <ul>
+          <li>Silver Medal, 40th Chinese Physics Olympiad Final, 2023</li>
+          <li>UESTC Special Scholarship</li>
+          <li>National Second Prize, China Undergraduate Physics Tournament, 2025</li>
+          <li>First Prize, CUPT Southwest Regional Tournament, 2025</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Selected Coursework</h2>
+        <ul>
+          <li>College Physics I: 99</li>
+          <li>College Physics II: 97</li>
+          <li>Mathematical Analysis II: 97</li>
+          <li>C Programming: 96</li>
+          <li>Linear Algebra: 95</li>
+        </ul>
+      </div>
+    </section>
+
+    <p class="footer">
+      © 2026 Tinghao Wang. Last updated: July 2026.
+    </p>
+  </main>
+</body>
+</html>
